@@ -1,3 +1,5 @@
+# Command Prompt Battle Royale
+
 This program is a small battle royale simulation which can be run
 in the command prompt. It can generate a playing field of given
 size and play with a given set of players. There are multiple 
