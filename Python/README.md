@@ -9,3 +9,5 @@ The folder contains the following projects:<br>
    * This program can download any youtube URL to MP4 or MP3 format.
  * __Calculator__
    * This program is a basic calculator program made with the TkInter library.
+ * __Evolutionary Algorithm__
+   * This script generates an _n_-order function and then runs an evolutionary algorithm to learn it.
