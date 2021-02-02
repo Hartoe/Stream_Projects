@@ -1,3 +1,5 @@
+# Auto Clicker
+
 This is a small program that simulates user input from
 the mouse and keyboard. You can select a key or button
 to be pressed and a timer. The program than presses the
