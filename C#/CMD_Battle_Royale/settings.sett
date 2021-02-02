@@ -1,0 +1,6 @@
+name hartoehajek
+ai 2
+autotick True
+tickspeed 1000
+fcolor White
+bcolor Black
