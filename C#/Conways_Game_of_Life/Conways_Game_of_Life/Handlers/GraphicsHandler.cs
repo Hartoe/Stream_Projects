@@ -30,6 +30,11 @@ namespace Conways_Game_of_Life
             return Content.Load<Texture2D>(path);
         }
 
+        public static SpriteFont Load_Font(string path)
+        {
+            return Content.Load<SpriteFont>(path);
+        }
+
         public static void Set_Sprite_Batch()
         {
             GameSprites = new SpriteBatch(GraphicsDevice);
@@ -48,9 +53,24 @@ namespace Conways_Game_of_Life
             GUI.End();
         }
 
-        public static void Draw_Sprite(SpriteBatch layer, Texture2D sprite, Vector2 position)
+        public static void Draw_Sprite(SpriteBatch layer, Texture2D sprite, Vector2 position, Vector2? scale = null, Color? color = null)
         {
-            layer.Draw(sprite, position, Color.White);
+            Vector2 real_scale;
+            Color real_color;
+            if (scale != null)
+                real_scale = (Vector2)scale;
+            else
+                real_scale = Vector2.One;
+            if (color != null)
+                real_color = (Color)color;
+            else
+                real_color = Color.White;
+            layer.Draw(sprite, position, new Rectangle(0,0,sprite.Width,sprite.Height), real_color, 0f, Vector2.Zero, real_scale, SpriteEffects.None, 0);
+        }
+
+        public static void Draw_String(SpriteBatch layer, SpriteFont font, Vector2 position, string text, Color color)
+        {
+            layer.DrawString(font, text, position, color);
         }
     }
 }

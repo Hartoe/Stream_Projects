@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace Conways_Game_of_Life
 {
@@ -10,7 +11,7 @@ namespace Conways_Game_of_Life
     public class MainGame : Game
     {
         GraphicsDeviceManager graphics;
-        GameWorld gameWorld;
+        GameStateManager gameStateManager;
 
         public MainGame()
         {
@@ -30,11 +31,18 @@ namespace Conways_Game_of_Life
             IsMouseVisible = true;
             Point GridSize = new Point(150, 100);
             int cell_width = 32;
+            GameWorld world = new GameWorld();
+
+            Console.WriteLine(GraphicsDevice.Viewport.Width);
 
             GraphicsHandler.Init(graphics, GraphicsDevice, Content);
             InputHandler.Init();
-            Camera.Init(GraphicsDevice.Viewport, GridSize, cell_width);
-            gameWorld = new GameWorld(GridSize, cell_width);
+            gameStateManager = new GameStateManager();
+            gameStateManager.Add_State("classic", new ClassicState(world, gameStateManager, GridSize, cell_width));
+            gameStateManager.Add_State("dual", new DualState(world, gameStateManager, GridSize, cell_width));
+            gameStateManager.Add_State("menu", new MenuState(world, gameStateManager));
+            gameStateManager.Set_State("menu");
+            Camera.Init(GraphicsDevice.Viewport, GridSize, cell_width, gameStateManager);
             base.Initialize();
         }
 
@@ -63,12 +71,9 @@ namespace Conways_Game_of_Life
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-
             InputHandler.Update();
             Camera.Update();
-            gameWorld.Update(gameTime);
+            gameStateManager.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -79,10 +84,10 @@ namespace Conways_Game_of_Life
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Gray);
 
             GraphicsHandler.Begin();
-            gameWorld.Draw();
+            gameStateManager.Draw();
             GraphicsHandler.End();
 
             base.Draw(gameTime);

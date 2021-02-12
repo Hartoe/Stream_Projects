@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>D:/Programming/Stream Projects/Stream_Projects/C#/Evolutionary_Game/Evolutionary_Game/Content/Sprites/Creature/Creature.png</File>
+    <File>D:/Programming/Stream Projects/Stream_Projects/C#/Evolutionary_Game/Evolutionary_Game/Content/Sprites/Land/tiles.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File>Sprites/Creature/idle.png</File>
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>

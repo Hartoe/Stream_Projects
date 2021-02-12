@@ -33,6 +33,12 @@ namespace Conways_Game_of_Life
             => previous_mouse_state.LeftButton == ButtonState.Released
                 && current_mouse_state.LeftButton == ButtonState.Pressed;
 
+        public static bool Left_Mouse_Down()
+            => current_mouse_state.LeftButton == ButtonState.Pressed;
+
+        public static bool Right_Mouse_Down()
+            => current_mouse_state.RightButton == ButtonState.Pressed;
+
         public static bool Key_Pressed(Keys key)
             => previous_keyboard_state.IsKeyUp(key)
                 && current_keyboard_state.IsKeyDown(key);

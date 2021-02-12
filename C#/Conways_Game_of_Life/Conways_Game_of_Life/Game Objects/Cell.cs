@@ -11,15 +11,21 @@ namespace Conways_Game_of_Life
     class Cell : GameObject
     {
         public bool alive { get; private set; }
-        bool destroy, create;
-        Texture2D current_sprite, dead_sprite, alive_sprite;
+        public bool red, classic;
+        bool destroy, create, mouse_in;
+        Texture2D current_sprite, dead_sprite, alive_sprite, red_sprite, blue_sprite;
 
-        public Cell(Vector2 position) : base(position)
+        public Cell(Vector2 position, bool classic) : base(position)
         {
             dead_sprite = GraphicsHandler.Load_Sprite("Sprites/Cell/cell_dead");
             alive_sprite = GraphicsHandler.Load_Sprite("Sprites/Cell/cell_alive");
+            red_sprite = GraphicsHandler.Load_Sprite("Sprites/Cell/cell_red");
+            blue_sprite = GraphicsHandler.Load_Sprite("Sprites/Cell/cell_blue");
             current_sprite = dead_sprite;
             alive = destroy = create = false;
+            mouse_in = false;
+            red = true;
+            this.classic = classic;
         }
 
         public void Destroy_Cell()
@@ -36,11 +42,13 @@ namespace Conways_Game_of_Life
         {
             if (GameWorld.Paused)
             {
-                if (InputHandler.Left_Mouse_Clicked() && Mouse_In_Cell())
+                if (classic)
                 {
-                    alive = !alive;
-                    destroy = false;
-                    create = false;
+                    Classic_Placement();
+                }
+                else
+                {
+                    Dual_Placement();
                 }
             }
 
@@ -56,7 +64,19 @@ namespace Conways_Game_of_Life
             }
 
             if (alive)
-                current_sprite = alive_sprite;
+            {
+                if (classic)
+                {
+                    current_sprite = alive_sprite;
+                }
+                else
+                {
+                    if (red)
+                        current_sprite = red_sprite;
+                    else
+                        current_sprite = blue_sprite;
+                }
+            }
             else
                 current_sprite = dead_sprite;
         }
@@ -74,6 +94,59 @@ namespace Conways_Game_of_Life
                 && mouse_pos.Y > scale_pos.Y
                 && mouse_pos.X < scale_pos.X + current_sprite.Width * Camera.Zoom
                 && mouse_pos.Y < scale_pos.Y + current_sprite.Height * Camera.Zoom);
+        }
+
+        private void Classic_Placement()
+        {
+            if (Mouse_In_Cell() && !mouse_in)
+            {
+                if (InputHandler.Left_Mouse_Down())
+                {
+                    alive = true;
+                    destroy = false;
+                    create = false;
+                    mouse_in = true;
+                }
+                if (InputHandler.Right_Mouse_Down())
+                {
+                    alive = false;
+                    destroy = false;
+                    create = false;
+                    mouse_in = true;
+                }
+            }
+
+            if (!Mouse_In_Cell())
+                mouse_in = false;
+        }
+
+        private void Dual_Placement()
+        {
+            if (Mouse_In_Cell() && !mouse_in)
+            {
+                if (InputHandler.Left_Mouse_Down())
+                {
+                    if (InputHandler.Key_Down(Microsoft.Xna.Framework.Input.Keys.LeftShift))
+                        red = true;
+                    else
+                        red = false;
+
+                    alive = true;
+                    destroy = false;
+                    create = false;
+                    mouse_in = true;
+                }
+                if (InputHandler.Right_Mouse_Down())
+                {
+                    alive = false;
+                    destroy = false;
+                    create = false;
+                    mouse_in = true;
+                }
+            }
+
+            if (!Mouse_In_Cell())
+                mouse_in = false;
         }
     }
 }

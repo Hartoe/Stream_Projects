@@ -13,13 +13,11 @@ namespace Conways_Game_of_Life
 
         List<GameObject> objects, add_objects, remove_objects;
 
-        public GameWorld(Point size, int cell_width)
+        public GameWorld()
         {
             objects = new List<GameObject>();
             add_objects = new List<GameObject>();
             remove_objects = new List<GameObject>();
-
-            objects.Add(new Grid(Vector2.Zero, size.X, size.Y, cell_width));
         }
 
         public void Add_Object(GameObject obj)
@@ -30,6 +28,15 @@ namespace Conways_Game_of_Life
         public void Remove_Object(GameObject obj)
         {
             remove_objects.Add(obj);
+        }
+
+        public void Clear_Objects()
+        {
+            foreach (GameObject obj in add_objects)
+                Remove_Object(obj);
+            add_objects.Clear();
+            foreach (GameObject obj in objects)
+                Remove_Object(obj);
         }
 
         public void Update(GameTime gameTime)
