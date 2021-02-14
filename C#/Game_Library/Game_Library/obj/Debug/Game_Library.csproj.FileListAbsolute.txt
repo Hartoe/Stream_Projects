@@ -1,0 +1,9 @@
+D:\Programming\Stream Projects\Stream_Projects\C#\Game_Library\Game_Library\bin\Debug\Game_Library.dll
+D:\Programming\Stream Projects\Stream_Projects\C#\Game_Library\Game_Library\bin\Debug\Game_Library.pdb
+D:\Programming\Stream Projects\Stream_Projects\C#\Game_Library\Game_Library\bin\Debug\MonoGame.Framework.dll
+D:\Programming\Stream Projects\Stream_Projects\C#\Game_Library\Game_Library\bin\Debug\MonoGame.Framework.xml
+D:\Programming\Stream Projects\Stream_Projects\C#\Game_Library\Game_Library\obj\Debug\Game_Library.csprojAssemblyReference.cache
+D:\Programming\Stream Projects\Stream_Projects\C#\Game_Library\Game_Library\obj\Debug\Game_Library.csproj.CoreCompileInputs.cache
+D:\Programming\Stream Projects\Stream_Projects\C#\Game_Library\Game_Library\obj\Debug\Game_Library.csproj.CopyComplete
+D:\Programming\Stream Projects\Stream_Projects\C#\Game_Library\Game_Library\obj\Debug\Game_Library.dll
+D:\Programming\Stream Projects\Stream_Projects\C#\Game_Library\Game_Library\obj\Debug\Game_Library.pdb

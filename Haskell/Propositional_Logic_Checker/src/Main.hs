@@ -1,18 +1,9 @@
--- (P) -> Evaluate == DONE
--- (P) -> Get Table
--- (P) -> Is Tautology
--- (P) (Q) -> does p imply q 
-
---prop_logic eval (prop)
---prop_logic table (prop)
---prop_logic taut (prop)
---prop_logic imply (prop) (prop)
-
 module Main where
 
 import Data.Char
 import System.IO
 import System.Environment
+import System.Eval.Haskell
 
 data Prop = Const Bool
     | Var Char
@@ -32,9 +23,18 @@ instance Show Prop where
 
 type Subst = [(Char, Bool)]
 
+(.&) :: Prop -> Prop -> Prop
+(.&) p q = And p q
+(.|) :: Prop -> Prop -> Prop
+(.|) p q = Or p q
+(.=>) :: Prop -> Prop -> Prop
+(.=>) p q = Imply p q
+
 main :: IO()
 main = do
-    args <- getArgs
+    i <- eval "1 + 6 :: Int" [] :: IO (Maybe Int)
+    when (isJust i) $ putStrLn (show (fromJust i))
+    {-args <- getArgs
     let (mode, config) = handle_args args
     case mode of
         "eval" -> evaluate_prop config
@@ -42,7 +42,7 @@ main = do
         "taut" -> tautology_check config
         "imply" -> imply_check config
         "help" -> print_help
-        _ -> putStrLn "Unknown mode!"
+        _ -> putStrLn "Unknown mode!"-}
 
 -- Input Handling Function
 handle_args :: [String] -> (String, (String, String))
