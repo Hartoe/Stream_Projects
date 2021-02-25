@@ -18,7 +18,7 @@ def init():
     root = tk.Tk()
     root.title("Auto Clicker")
     root.resizable(False, False)
-    root.iconbitmap('../../images/icon.ico')
+    root.iconbitmap('../images/icon.ico')
     return root
 
 def get_menu_frame(root):

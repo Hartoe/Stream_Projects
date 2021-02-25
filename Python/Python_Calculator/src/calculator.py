@@ -11,7 +11,7 @@ def init():
     root = tk.Tk()
     root.title("Calculator")
     root.resizable(False, False)
-    root.iconbitmap('../../images/icon.ico')
+    root.iconbitmap('../images/icon.ico')
 
     #Make variables
     output_font = font.Font(family="Fixedsys", size=18)
