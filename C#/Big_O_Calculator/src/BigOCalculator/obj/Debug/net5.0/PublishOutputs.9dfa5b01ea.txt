@@ -1,3 +1,0 @@
-D:\Programming\Stream_Projects\Big_O_Calculator\src\BigOCalculator\bin\Debug\net5.0\publish\BigOCalculator.dll
-D:\Programming\Stream_Projects\Big_O_Calculator\src\BigOCalculator\bin\Debug\net5.0\publish\BigOCalculator.deps.json
-D:\Programming\Stream_Projects\Big_O_Calculator\src\BigOCalculator\bin\Debug\net5.0\publish\BigOCalculator.pdb
