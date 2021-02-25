@@ -6,3 +6,4 @@ D:\Programming\Stream Projects\Stream_Projects\C#\Game_Library\Game_Library\obj\
 D:\Programming\Stream Projects\Stream_Projects\C#\Game_Library\Game_Library\obj\Release\Game_Library.csproj.CopyComplete
 D:\Programming\Stream Projects\Stream_Projects\C#\Game_Library\Game_Library\obj\Release\Game_Library.dll
 D:\Programming\Stream Projects\Stream_Projects\C#\Game_Library\Game_Library\obj\Release\Game_Library.pdb
+D:\Programming\Stream Projects\Stream_Projects\C#\Game_Library\Game_Library\obj\Release\Game_Library.csprojAssemblyReference.cache

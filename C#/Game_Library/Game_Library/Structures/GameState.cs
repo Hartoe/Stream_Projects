@@ -10,7 +10,7 @@ namespace Game_Library.Structures
 {
     public abstract class GameState
     {
-        List<GameObject> objects;
+        protected List<GameObject> objects;
 
         public GameState()
         {

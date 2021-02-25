@@ -1,1 +1,17 @@
+# Ignore all temp files.
 **/*~
+
+# Ignore the pycache and builds
+Python/**/*.spec
+Python/**/dist
+Python/**/build
+Python/**/src/__pycache__
+Python/**/.vscode
+
+# Ignore C# builds and temp files
+C\#/**/bin
+C\#/**/obj
+C\#/**/.vs
+
+# Ignore Stack temp files
+Haskell/**/.stack-work
