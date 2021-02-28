@@ -91,9 +91,12 @@ namespace Game_Library.Handlers
             graphicsDevice.SetRenderTarget(group.target);
 
             Begin(camera, group.shader);
-            foreach (KeyValuePair<string, Sprite> spr in group.sprites)
+            foreach (KeyValuePair<string, RenderObject> spr in group.sprites)
             {
-                Draw_Sprite(group.end_target, spr.Value.sprite, spr.Value.position);
+                if (spr.Value is Sprite)
+                    Draw_Sprite(group.end_target, (Sprite) spr.Value);
+                if (spr.Value is Text)
+                    Draw_Text(group.end_target, (Text) spr.Value);
             }
             End();
 
@@ -106,14 +109,27 @@ namespace Game_Library.Handlers
             group.target.Dispose();
         }
 
-        public void Draw_Sprite(SpriteBatch layer, Texture2D sprite, Vector2 position)
+        public void Draw_Sprite(SpriteBatch layer, Sprite sprite)
         {
-            layer.Draw(sprite, position, Color.White);
+            layer.Draw(sprite.sprite, sprite.position, sprite.source, sprite.color, sprite.rotation, sprite.origin, sprite.scale, sprite.effect, sprite.layerDepth);
         }
-        public void Draw_Sprite(ShaderGroup group, string id, Texture2D sprite, Vector2 position)
+        public void Draw_Sprite(ShaderGroup group, string id, Sprite sprite)
         {
-            group.Bind(id, new Sprite(sprite, position));
+            group.Bind(id, sprite);
         }
 
+        public void Draw_Text(SpriteBatch layer, Text text)
+        {
+            layer.DrawString(text.font, text.text, text.position, text.color, text.rotation, text.origin, text.scale, text.effect, text.layerDepth);
+        }
+        public void Draw_Text(ShaderGroup group, string id, Text text)
+        {
+            group.Bind(id, text);
+        }
+
+        public void Draw_Animation(ShaderGroup group, string id, Animation animation)
+        {
+            group.Bind(id, animation.sprite);
+        }
     }
 }

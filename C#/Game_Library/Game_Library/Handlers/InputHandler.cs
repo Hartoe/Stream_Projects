@@ -21,8 +21,8 @@ namespace Game_Library.Handlers
         public Point Mouse_Position => current_mouse_state.Position;
         public float Scroll_Value => current_mouse_state.ScrollWheelValue;
 
-        KeyboardState current_keyboard_state, previous_keyboard_state;
-        MouseState current_mouse_state, previous_mouse_state;
+        public KeyboardState current_keyboard_state, previous_keyboard_state;
+        public MouseState current_mouse_state, previous_mouse_state;
 
         public InputHandler()
         {

@@ -8,30 +8,32 @@ using System.Threading.Tasks;
 
 namespace Game_Library.Helpers
 {
-    public struct Sprite : RenderObject
+    public class Text : RenderObject
     {
-        public Texture2D sprite;
-        public Vector2 position, origin, scale;
-        public Rectangle source;
+        public SpriteFont font;
+        public string text;
+        public Vector2 position;
         public Color color;
-        public float rotation, layerDepth;
+        public float rotation;
+        public Vector2 origin;
+        public Vector2 scale;
         public SpriteEffects effect;
+        public float layerDepth;
 
-        public Sprite(Texture2D sprite, Vector2? position = null, Color? color = null, Rectangle? source = null,
+        public Text(SpriteFont font, string text, Vector2? position = null, Color? color = null,
             float rotation = 0, Vector2? origin = null, Vector2? scale = null, SpriteEffects effect = SpriteEffects.None,
             float layerDepth = 1)
         {
-            this.sprite = sprite;
+            this.font = font;
+            this.text = text;
             this.rotation = rotation;
             this.effect = effect;
             this.layerDepth = layerDepth;
 
             this.position = Vector2.Zero;
             if (position != null) { this.position = (Vector2)position; }
-            this.color = Color.White;
+            this.color = Color.Black;
             if (color != null) { this.color = (Color)color; }
-            this.source = new Rectangle(0, 0, sprite.Width, sprite.Height);
-            if (source != null) { this.source = (Rectangle)source; }
             this.origin = Vector2.Zero;
             if (origin != null) { this.origin = (Vector2)origin; }
             this.scale = Vector2.One;

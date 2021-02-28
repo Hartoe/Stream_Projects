@@ -11,14 +11,14 @@ namespace Game_Library.Helpers
     {
         public SpriteBatch end_target;
         public RenderTarget2D target;
-        public Dictionary<string, Sprite> sprites;
+        public Dictionary<string, RenderObject> sprites;
         public Effect shader;
 
         public ShaderGroup(SpriteBatch end_target, Effect shader)
         {
             this.end_target = end_target;
             this.shader = shader;
-            sprites = new Dictionary<string, Sprite>();
+            sprites = new Dictionary<string, RenderObject>();
         }
 
         public void Create_Render_Target(GraphicsDevice graphicsDevice)
@@ -27,9 +27,9 @@ namespace Game_Library.Helpers
             target = new RenderTarget2D(graphicsDevice, pp.BackBufferWidth, pp.BackBufferHeight, false, pp.BackBufferFormat, DepthFormat.Depth24Stencil8, 0, RenderTargetUsage.PreserveContents);
         }
 
-        public void Bind(string id, Sprite sprite)
+        public void Bind(string id, RenderObject obj)
         {
-            sprites.Add(id, sprite);
+            sprites.Add(id, obj);
         }
 
         public void Unbind(string id)
